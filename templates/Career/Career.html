@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap hero-cap2 pt-70 text-center">
-                                <h2>Blog</h2>
+                                <h2>Career</h2>
                             </div>
                         </div>
                     </div>
@@ -23,12 +23,7 @@
         <div class="container">
             <div class="row">
 
-                <form action="" method='get'>
-                {% csrf_token %}
-                <h2 style="color:black; font-size:22px;font-weight: bold;">FILTER EITHER VIDEOS,STORIES OR ACTIVITIES.</h2>
-                {{ myfilter.form }}
-            <button type="submit" class="btn btn-secondary btn-sm">Search</button>
-                </form>
+
 
             </div>
             </div>
@@ -38,13 +33,13 @@
                 <div class="row">
                     <div class="col-lg-8 mb-5 mb-lg-0">
                         <div class="blog_left_sidebar">
-                            {% for content in ourimpacts %}
+                            {% for content in career %}
                             <article class="blog_item">
                                 <div class="blog_item_img">
                                     <img class="card-img rounded-0" src="{{ content.image.url }}" alt="{{ content.name }}">
-                                    <a href="{% url 'ourimpacts_detail' content.slug%}" class="blog_item_date">
+                                    <a href="{% url 'career_detail' content.slug%}" class="blog_item_date">
 
-                                        <p>{{ content.date }}</p>
+                                        <p>{{ content.position }}</p>
                                     </a>
                                 </div>
                                 <div class="blog_details">
@@ -53,32 +48,32 @@
                                     </a>
                                   {% autoescape off %}  <p>{{ content.description | slice:80}}</p>{% endautoescape off %}
                                     <ul class="blog-info-link">
-                                        <li><i class="fa fa-bars"></i> {{ content.category }}</li>
-                                        <li><a href="{% url 'ourimpacts_detail' content.slug%}"><i class="fa fa-eye"></i> Read More...</a></li>
+                                        <li><i class="fa fa-date"></i> {{ content.date }}</li>
+                                        <li><a href="{% url 'career_detail' content.slug%}"><i class="fa fa-eye"></i> Read More...</a></li>
                                     </ul>
                                 </div>
                             </article>
                         {% endfor %}
-{% if ourimpacts_list.has_other_pages %}
+{% if career_list.has_other_pages %}
                             <nav class="blog-pagination justify-content-center d-flex">
                                 <ul class="pagination">
-                                    {% if ourimpacts_list.has_previous %}
+                                    {% if career_list.has_previous %}
                                     <li class="page-item">
-                                        <a href="?page={{ ourimpacts_list.previous_page_number }}" class="page-link" aria-label="Previous">
+                                        <a href="?page={{ career_list.previous_page_number }}" class="page-link" aria-label="Previous">
                                             <i class="ti-angle-left"></i>
                                         </a>
                                     </li>
                                     {% endif %}
-                                  {% for num in ourimpacts_list.paginator.page_range %}
-                                    {% if ourimpacts_list.number == num %}
+                                  {% for num in career_list.paginator.page_range %}
+                                    {% if career_list.number == num %}
                                     <li class="page-item active">
                                         <a href="?page={{ num }}" class="page-link">{{ num }}</a>
                                     </li>
                                 {% endif %}
                                     {% endfor %}
-                                     {% if ourimpacts_list.has_next %}
+                                     {% if career_list.has_next %}
                                     <li class="page-item">
-                                        <a href="?page={{ ourimpacts_list.next_page_number }}" class="page-link" aria-label="Next">
+                                        <a href="?page={{ career_list.next_page_number }}" class="page-link" aria-label="Next">
                                             <i class="ti-angle-right"></i>
                                         </a>
                                     </li>
@@ -110,8 +105,7 @@
 
                             </aside>
 
-
-                            <aside class="single_sidebar_widget popular_post_widget">
+                              <aside class="single_sidebar_widget popular_post_widget">
                                 <h3 class="widget_title" style="color: #2d2d2d;">Recent Jobs</h3>
                                 {% for recent in recent_jobs %}
                                 <div class="media post_item">

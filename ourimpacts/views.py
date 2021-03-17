@@ -2,13 +2,14 @@ from django.shortcuts import render
 from .models import OurImpacts
 from .filters import OurImpactsFilter
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-
+from career.models import Career
 
 def ourimpacts_list(request):
     ourimpacts = OurImpacts.objects.all()
     paginator = Paginator(ourimpacts, 15)
     page = request.GET.get('page')
     recent_post = OurImpacts.objects.all()[:3]
+    recent_jobs = Career.objects.all()[:3]
     try:
         ourimpacts_list = paginator.page(page)
     except PageNotAnInteger:
@@ -21,7 +22,8 @@ def ourimpacts_list(request):
         'ourimpacts': ourimpacts,
         'myfilter': myFilter,
         'ourimpacts_list': ourimpacts_list,
-        'recent_post': recent_post
+        'recent_post': recent_post,
+        'recent_jobs': recent_jobs
     }
     return render(request, 'ourimpacts/ourimpacts.html', context)
 
@@ -29,6 +31,7 @@ def ourimpacts_list(request):
 def ourimpacts_detail(request, slug):
     query = OurImpacts.objects.filter(slug__iexact=slug)
     recent_post = OurImpacts.objects.all()[:3]
+    recent_jobs = Career.objects.all()[:3]
     if query.exists:
         query = query.first()
     else:
@@ -36,7 +39,8 @@ def ourimpacts_detail(request, slug):
 
     context = {
         'ourimpacts': query,
-        'recent_post': recent_post
+        'recent_post': recent_post,
+        'recent_jobs': recent_jobs
     }
 
     return render(request, 'ourimpacts/ourimpacts_detail.html', context)

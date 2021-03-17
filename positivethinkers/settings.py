@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ptitz',
     'ourimpacts',
+    'career',
     'ckeditor',
     'crispy_forms',
     'django_filters',
