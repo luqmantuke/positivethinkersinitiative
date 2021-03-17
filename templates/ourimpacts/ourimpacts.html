@@ -42,7 +42,7 @@
                             <article class="blog_item">
                                 <div class="blog_item_img">
                                     <img class="card-img rounded-0" src="{{ content.image.url }}" alt="{{ content.name }}">
-                                    <a href="#" class="blog_item_date">
+                                    <a href="{% url 'ourimpacts_detail' content.slug%}" class="blog_item_date">
 
                                         <p>{{ content.date }}</p>
                                     </a>
@@ -54,159 +54,63 @@
                                   {% autoescape off %}  <p>{{ content.description | slice:80}}</p>{% endautoescape off %}
                                     <ul class="blog-info-link">
                                         <li><i class="fa fa-bars"></i> {{ content.category }}</li>
-                                        <li><a href="#"><i class="fa fa-eye"></i> Read More...</a></li>
+                                        <li><a href="{% url 'ourimpacts_detail' content.slug%}"><i class="fa fa-eye"></i> Read More...</a></li>
                                     </ul>
                                 </div>
                             </article>
                         {% endfor %}
-
+{% if ourimpacts_list.has_other_pages %}
                             <nav class="blog-pagination justify-content-center d-flex">
                                 <ul class="pagination">
+                                    {% if ourimpacts_list.has_previous %}
                                     <li class="page-item">
-                                        <a href="#" class="page-link" aria-label="Previous">
+                                        <a href="?page={{ ourimpacts_list.previous_page_number }}" class="page-link" aria-label="Previous">
                                             <i class="ti-angle-left"></i>
                                         </a>
                                     </li>
-                                    <li class="page-item">
-                                        <a href="#" class="page-link">1</a>
-                                    </li>
+                                    {% endif %}
+                                  {% for num in ourimpacts_list.paginator.page_range %}
+                                    {% if ourimpacts_list.number == num %}
                                     <li class="page-item active">
-                                        <a href="#" class="page-link">2</a>
+                                        <a href="?page={{ num }}" class="page-link">{{ num }}</a>
                                     </li>
+                                {% endif %}
+                                    {% endfor %}
+                                     {% if ourimpacts_list.has_next %}
                                     <li class="page-item">
-                                        <a href="#" class="page-link" aria-label="Next">
+                                        <a href="?page={{ ourimpacts_list.next_page_number }}" class="page-link" aria-label="Next">
                                             <i class="ti-angle-right"></i>
                                         </a>
                                     </li>
+                                    {% endif %}
                                 </ul>
                             </nav>
+{% endif %}
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="blog_right_sidebar">
-                            <aside class="single_sidebar_widget search_widget">
-                                <form action="#">
-                                    <div class="form-group">
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" placeholder='Search Keyword'
-                                                onfocus="this.placeholder = ''"
-                                                onblur="this.placeholder = 'Search Keyword'">
-                                            <div class="input-group-append">
-                                                <button class="btns" type="button"><i class="ti-search"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                        type="submit">Search</button>
-                                </form>
-                            </aside>
-                            <aside class="single_sidebar_widget post_category_widget">
-                                <h4 class="widget_title" style="color: #2d2d2d;">Category</h4>
-                                <ul class="list cat-list">
-                                    <li>
-                                        <a href="#" class="d-flex">
-                                            <p>Resaurant food</p>
-                                            <p>(37)</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex">
-                                            <p>Travel news</p>
-                                            <p>(10)</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex">
-                                            <p>Modern technology</p>
-                                            <p>(03)</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex">
-                                            <p>Product</p>
-                                            <p>(11)</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex">
-                                            <p>Inspiration</p>
-                                            <p>21</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex">
-                                            <p>Health Care (21)</p>
-                                            <p>09</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </aside>
+
+
                             <aside class="single_sidebar_widget popular_post_widget">
                                 <h3 class="widget_title" style="color: #2d2d2d;">Recent Post</h3>
+                                {% for recent in recent_post %}
                                 <div class="media post_item">
-                                    <img src="{% static 'assets/img/post/post_1.png' %}" alt="post">
+                                    <img style="width:20%; height:auto;" src="{{ recent.image.url }}" alt="{{ recent.name }}">
+
                                     <div class="media-body">
-                                        <a href="blog_details.html">
-                                            <h3 style="color: #2d2d2d;">From life was you fish...</h3>
+                                        <a href="{% url 'ourimpacts_detail' recent.slug%}">
+                                            <h3 style="color: #2d2d2d;max-width:100%; height:auto;">{{ recent.name }}</h3>
                                         </a>
-                                        <p>January 12, 2019</p>
+                                        <p style="max-width:100%; height:auto;">{{ recent.date }}</p>
+                                       <p style="color: #2d2d2d;max-width:100%; height:auto; font-weight:bold">{{ recent.category }}</p>
                                     </div>
                                 </div>
+                               {% endfor %}
 
                             </aside>
-                            <aside class="single_sidebar_widget tag_cloud_widget">
-                                <h4 class="widget_title" style="color: #2d2d2d;">Tag Clouds</h4>
-                                <ul class="list">
-                                    <li>
-                                        <a href="#">project</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">love</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">technology</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">travel</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">restaurant</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">life style</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">design</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">illustration</a>
-                                    </li>
-                                </ul>
-                            </aside>
-
-                            <aside class="single_sidebar_widget instagram_feeds">
-                                <h4 class="widget_title" style="color: #2d2d2d;">Instagram Feeds</h4>
-                                <ul class="instagram_row flex-wrap">
-                                    <li>
-                                        <a href="#">
-                                            <img class="img-fluid" src="{% static 'assets/img/post/post_5.png' %}" alt="">
-                                        </a>
-                                    </li>
 
 
-                                </ul>
-                            </aside>
-                            <aside class="single_sidebar_widget newsletter_widget">
-                                <h4 class="widget_title" style="color: #2d2d2d;">Newsletter</h4>
-                                <form action="#">
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" onfocus="this.placeholder = ''"
-                                            onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
-                                    </div>
-                                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                        type="submit">Subscribe</button>
-                                </form>
-                            </aside>
                         </div>
                     </div>
                 </div>

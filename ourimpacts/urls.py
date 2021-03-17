@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import blog_list
+from .views import ourimpacts_list, ourimpacts_detail
 
 urlpatterns = [
-    path('ourimpacts/', blog_list, name="blog-list"),
+    path('ourimpacts/', ourimpacts_list, name="ourimpacts_list"),
+    path('ourimpacts/<slug:slug>/', ourimpacts_detail, name="ourimpacts_detail"),
 ]
