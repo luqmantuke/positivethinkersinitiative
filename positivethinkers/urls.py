@@ -27,3 +27,5 @@ urlpatterns = [
     path('', include('updates_events.urls')),
 ]
 
+handler404 = 'ptitz.views.handler404'
+handler500 = 'ptitz.views.handler500'
