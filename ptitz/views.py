@@ -5,10 +5,24 @@ from django.http import HttpResponse, HttpResponseRedirect
 from positivethinkers import settings
 from django.urls import reverse
 from django.contrib import messages
+from ourimpacts.models import OurImpacts
+from career.models import Career
+from projects.models import Projects
+from updates_events.models import Updates
 
 
 def home(request):
-    return render(request, 'index.html')
+    latest_projects = Projects.objects.all()[0:3]
+    latest_updates = Updates.objects.all()[0:3]
+    latest_impacts = OurImpacts.objects.all()[0:2]
+
+    context = {
+        'projects': latest_projects,
+        'updates': latest_updates,
+        'impacts': latest_impacts
+    }
+
+    return render(request, 'index.html', context)
 
 
 def contact(request):

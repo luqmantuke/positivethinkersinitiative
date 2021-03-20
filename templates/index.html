@@ -72,7 +72,7 @@
                             <span class="flaticon-null-1"></span>
                         </div>
                         <div class="cat-cap">
-                            <h5><a href="services.html">Clean Water</a></h5>
+                            <h5><a href="services.html">Creativity</a></h5>
                             <p>The sea freight service has grown conside rably in recent years. We spend timetting to know your processes to.</p>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                             <span class="flaticon-think"></span>
                         </div>
                         <div class="cat-cap">
-                            <h5><a href="services.html">Clean Water</a></h5>
+                            <h5><a href="services.html">Critical Thinking</a></h5>
                             <p>The sea freight service has grown conside rably in recent years. We spend timetting to know your processes to.</p>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                             <span class="flaticon-gear"></span>
                         </div>
                         <div class="cat-cap">
-                            <h5><a href="services.html">Clean Water</a></h5>
+                            <h5><a href="services.html">Charity</a></h5>
                             <p>The sea freight service has grown conside rably in recent years. We spend timetting to know your processes to.</p>
                         </div>
                     </div>
@@ -111,13 +111,13 @@
                     <div class="about-caption mb-50">
                         <!-- Section Tittle -->
                         <div class="section-tittle mb-35">
-                            <span>About our foundetion</span>
+                            <span>About our foundation</span>
                             <h2>We Are In A Mission To  Help Helpless</h2>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,mod tempor incididunt ut labore et dolore magna aliqua. Utnixm, quis nostrud exercitation ullamc.</p>
                         <p>Lorem ipvsum dolor sit amext, consectetur adipisicing elit, smod tempor incididunt ut labore et dolore.</p>
                     </div>
-                    <a href="about.html" class="btn">About US</a>
+                    <a href="{% url 'about' %}" class="btn">About US</a>
                 </div>
                 <div class="col-lg-6 col-md-12">
                     <!-- about-img -->
@@ -142,89 +142,27 @@
                     <!-- Section Tittle -->
                     <div class="section-tittle text-center mb-80">
                         <span>Our Cases you can see</span>
-                        <h2>Explore our latest causes that we works </h2>
+                        <h2>Explore our latest Projects that we work on </h2>
                     </div>
                 </div>
             </div>
             <div class="row">
+
+                {% for project in projects %}
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="single-cases mb-40">
                         <div class="cases-img">
-                            <img src="{% static 'assets/img/gallery/case1.png' %}" alt="">
+                            <img src="{{ project.image.url }}" alt="{{ project.name }}">
                         </div>
                         <div class="cases-caption">
-                            <h3><a href="#">Ensure Education For Every Poor Children</a></h3>
-                            <!-- Progress Bar -->
-                            <div class="single-skill mb-15">
-                                <div class="bar-progress">
-                                    <div id="bar1" class="barfiller">
-                                        <div class="tipWrap">
-                                            <span class="tip"></span>
-                                        </div>
-                                        <span class="fill" data-percentage="70"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- / progress -->
-                            <div class="prices d-flex justify-content-between">
-                                <p>Raised:<span> $20,000</span></p>
-                                <p>Goal:<span> $35,000</span></p>
-                            </div>
+                            <h3><a href="{% url 'projects_detail' project.slug %}">{{ project.name }}</a></h3>
+
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cases mb-40">
-                        <div class="cases-img">
-                            <img src="{% static 'assets/img/gallery/case2.png' %}" alt="">
-                        </div>
-                        <div class="cases-caption">
-                            <h3><a href="#">Providing Healthy Food For The Children</a></h3>
-                            <!-- Progress Bar -->
-                            <div class="single-skill mb-15">
-                                <div class="bar-progress">
-                                    <div id="bar2" class="barfiller">
-                                        <div class="tipWrap">
-                                            <span class="tip"></span>
-                                        </div>
-                                        <span class="fill" data-percentage="25"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- / progress -->
-                            <div class="prices d-flex justify-content-between">
-                                <p>Raised:<span> $20,000</span></p>
-                                <p>Goal:<span> $35,000</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cases mb-40">
-                        <div class="cases-img">
-                            <img src="{% static 'assets/img/gallery/case3.png' %}" alt="">
-                        </div>
-                        <div class="cases-caption">
-                            <h3><a href="#">Supply Drinking Water For  The People</a></h3>
-                            <!-- Progress Bar -->
-                            <div class="single-skill mb-15">
-                                <div class="bar-progress">
-                                    <div id="bar3" class="barfiller">
-                                        <div class="tipWrap">
-                                            <span class="tip"></span>
-                                        </div>
-                                        <span class="fill" data-percentage="50"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- / progress -->
-                            <div class="prices d-flex justify-content-between">
-                                <p>Raised:<span> $20,000</span></p>
-                                <p>Goal:<span> $35,000</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+                {% endfor %}
+
             </div>
         </div>
     </div>
@@ -236,66 +174,35 @@
                 <div class="col-xl-7 col-lg-9 col-md-10 col-sm-12">
                     <!-- Section Tittle -->
                     <div class="section-tittle text-center mb-80">
-                        <span>What we are boing</span>
+                        <span>What we are doing</span>
                         <h2>We arrange many social events for charity donations</h2>
                     </div>
                 </div>
             </div>
             <div class="row justify-content-center">
+
+                {% for update in updates %}
                 <div class="col-lg-9 col-md-12">
                     <!-- single-job-content -->
                     <div class="single-job-items mb-30">
                         <div class="job-items">
                             <div class="company-img">
-                                <a href="#"><img src="{% static 'assets/img/gallery/socialEvents1.png' %}" alt=""></a>
+                                <a href="{% url 'updates_detail' update.slug %}"><img style="width:178px; height:174px" src="{{ update.image.url }}" alt="{{ update.name }}"></a>
                             </div>
                             <div class="job-tittle">
-                                <a href="{% url 'donations' %}"><h4>Donation is Hope</h4></a>
+                                <a href="{% url 'updates_detail' update.slug %}"><h4>{{ update.name }}</h4></a>
                                 <ul>
-                                    <li><i class="far fa-clock"></i>8:30 - 9:30am</li>
-                                    <li><i class="fas fa-sort-amount-down"></i>18.01.2021</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+                                    <li><i class="far fa-clock"></i>{{ update.time }}</li>
+                                    <li><i class="fas fa-sort-amount-down"></i>{{ update.date }}</li>
+                                    <li><i class="fas fa-map-marker-alt"></i>{{ update.location }}</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-9 col-md-12">
-                    <!-- single-job-content -->
-                    <div class="single-job-items mb-30">
-                        <div class="job-items">
-                            <div class="company-img">
-                                <a href="#"><img src="{% static 'assets/img/gallery/socialEvents2.png' %}" alt=""></a>
-                            </div>
-                            <div class="job-tittle">
-                                <a href="#"><h4>A hand for Children</h4></a>
-                                <ul>
-                                    <li><i class="far fa-clock"></i>8:30 - 9:30am</li>
-                                    <li><i class="fas fa-sort-amount-down"></i>18.01.2021</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-9 col-md-12">
-                    <!-- single-job-content -->
-                    <div class="single-job-items mb-30">
-                        <div class="job-items">
-                            <div class="company-img">
-                                <a href="#"><img src="{% static 'assets/img/gallery/socialEvents3.png' %}" alt=""></a>
-                            </div>
-                            <div class="job-tittle">
-                                <a href="#"><h4>Help for Children</h4></a>
-                                <ul>
-                                    <li><i class="far fa-clock"></i>8:30 - 9:30am</li>
-                                    <li><i class="fas fa-sort-amount-down"></i>18.01.2021</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+                {% endfor %}
+
             </div>
         </div>
     </section>
@@ -308,7 +215,7 @@
                     <!-- Section Tittle -->
                     <div class="section-tittle section-tittle2 text-center mb-70">
                         <span>What we are doing</span>
-                        <h2>Our Expert Volunteer Alwyes ready</h2>
+                        <h2>Our Expert Volunteer Always ready</h2>
                     </div> 
                 </div>
             </div>
@@ -471,48 +378,34 @@
             <div class="row justify-content-center">
                 <div class="col-xl-5 col-lg-6 col-md-9 col-sm-10">
                     <div class="section-tittle text-center mb-90">
-                        <span>Our recent blog</span>
-                        <h2>Latest News from our recent blog</h2>
+                        <span>Our recent Impacts</span>
+                        <h2>Latest Updates from our recent impacts</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
+
+                {% for impact in impacts %}
                 <div class="col-xl-6 col-lg-6 col-md-6">
                     <div class="home-blog-single mb-30">
                         <div class="blog-img-cap">
                             <div class="blog-img">
-                                <img src="{% static 'assets/img/gallery/home-blog1.png' %}" alt="">
+                                <img src="{{ impact.image.url }}" alt="{{ impact.name }}">
                                 <!-- Blog date -->
                                 <div class="blog-date text-center">
-                                    <span>24</span>
-                                    <p>Now</p>
+                                    <span>{{ impact.date }}</span>
+
                                 </div>
                             </div>
                             <div class="blog-cap">
-                                <p>Creative derector</p>
-                                <h3><a href="blog_details.html">Footprints in Time is perfect House in Kurashiki</a></h3>
+                                <p>{{ impact.category }}</p>
+                                <h3><a href="{% url 'ourimpacts_detail' impact.slug %}">{{ impact.name }}</a></h3>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-md-6">
-                    <div class="home-blog-single mb-30">
-                        <div class="blog-img-cap">
-                            <div class="blog-img">
-                                <img src="{% static 'assets/img/gallery/home-blog2.png' %}" alt="">
-                                <!-- Blog date -->
-                                <div class="blog-date text-center">
-                                    <span>24</span>
-                                    <p>Now</p>
-                                </div>
-                            </div>
-                            <div class="blog-cap">
-                                <p>Creative derector</p>
-                                <h3><a href="blog_details.html">Footprints in Time is perfect House in Kurashiki</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              {% endfor %}
+
             </div>
         </div>
     </section>
