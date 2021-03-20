@@ -3,7 +3,7 @@ from django.urls import reverse
 from ckeditor.fields import RichTextField
 from django.db.models.signals import pre_save
 from positivethinkers.utils import unique_slug_generator
-
+from django.utils import timezone
 # Create your models here.
 
 category_list = (('Videos', 'Videos'), ('Stories', 'Stories'), ('Activities', 'Activities'))
@@ -11,9 +11,9 @@ category_list = (('Videos', 'Videos'), ('Stories', 'Stories'), ('Activities', 'A
 class Career(models.Model):
     name = models.CharField(max_length=1000)
     position = models.CharField(max_length=3000)
-    image = models.ImageField(upload_to='our_impacts', null=True)
+    image = models.ImageField(upload_to='career', null=True)
     description = RichTextField(blank=True, null=True)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(default=timezone.now)
     slug = models.SlugField(null=True, blank=True)
 
     def get_absolute_url(self):

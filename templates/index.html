@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block title %}Positive Thinkers Initiative Tanzania {% endblock title %}
+
 {% block body %}
     <main>
     <!-- slider Area Start-->
@@ -15,8 +18,8 @@
                                 <P data-animation="fadeInUp" data-delay=".8s" >Onsectetur adipiscing elit, sed do eiusmod tempor incididunt ut bore et dolore magnt, sed do eiusmod.</P>
                                 <!-- Hero-btn -->
                                 <div class="hero__btn">
-                                    <a href="industries.html" class="btn hero-btn mb-10"  data-animation="fadeInLeft" data-delay=".8s">Donate</a>
-                                    <a href="industries.html" class="cal-btn ml-15" data-animation="fadeInRight" data-delay="1.0s">
+                                    <a href="{% url 'donations' %}" class="btn hero-btn mb-10"  data-animation="fadeInLeft" data-delay=".8s">Donate</a>
+                                    <a href="{% url 'donations' %}" class="cal-btn ml-15" data-animation="fadeInRight" data-delay="1.0s">
                                         <i class="flaticon-null"></i>
                                         <p>+255 758 585 847</p>
                                     </a>
@@ -36,8 +39,8 @@
                                 <P data-animation="fadeInUp" data-delay=".8s" >Onsectetur adipiscing elit, sed do eiusmod tempor incididunt ut bore et dolore magnt, sed do eiusmod.</P>
                                 <!-- Hero-btn -->
                                 <div class="hero__btn">
-                                    <a href="industries.html" class="btn hero-btn mb-10"  data-animation="fadeInLeft" data-delay=".8s">Donate</a>
-                                    <a href="industries.html" class="cal-btn ml-15" data-animation="fadeInRight" data-delay="1.0s">
+                                    <a href="{% url 'donations' %}" class="btn hero-btn mb-10"  data-animation="fadeInLeft" data-delay=".8s">Donate</a>
+                                    <a href="{% url 'donations' %}" class="cal-btn ml-15" data-animation="fadeInRight" data-delay="1.0s">
                                         <i class="flaticon-null"></i>
                                         <p>+255 758 585 847</p>
                                     </a>
@@ -247,7 +250,7 @@
                                 <a href="#"><img src="{% static 'assets/img/gallery/socialEvents1.png' %}" alt=""></a>
                             </div>
                             <div class="job-tittle">
-                                <a href="#"><h4>Donation is Hope</h4></a>
+                                <a href="{% url 'donations' %}"><h4>Donation is Hope</h4></a>
                                 <ul>
                                     <li><i class="far fa-clock"></i>8:30 - 9:30am</li>
                                     <li><i class="fas fa-sort-amount-down"></i>18.01.2021</li>

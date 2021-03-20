@@ -24,6 +24,8 @@ urlpatterns = [
     path('', include('ptitz.urls')),
     path('', include('ourimpacts.urls')),
     path('', include('career.urls')),
+    path('', include('projects.urls')),
+    path('', include('updates_events.urls')),
 ]
 
 urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

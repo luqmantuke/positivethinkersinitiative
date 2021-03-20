@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Donate Positive Thinkers Initiative Tanzania {% endblock title %}
+
+{% block body %}
+
+<main>
+        <!--? Hero Start -->
+        <div class="slider-area2">
+            <div class="slider-height2 d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap hero-cap2 pt-20 text-center">
+                                <h2>Donations</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero End -->
+		<!--? Start Sample Area -->
+		<section class="sample-text-area">
+			<div class="container box_1170">
+				<h3 class="text-heading">Text Sample</h3>
+				<p class="sample-text">
+					Every avid independent filmmaker has <b>Bold</b> about making that <i>Italic</i> interest documentary,
+					or short
+					film to show off their creative prowess. Many have great ideas and want to “wow”
+					the<sup>Superscript</sup> scene,
+					or video renters with their big project. But once you have the<sub>Subscript</sub> “in the can” (no easy
+					feat), how
+					do you move from a <del>Strike</del> through of master DVDs with the <u>“Underline”</u> marked
+					hand-written title
+					inside a secondhand CD case, to a pile of cardboard boxes full of shiny new, retail-ready DVDs, with UPC
+					barcodes
+					and polywrap sitting on your doorstep? You need to create eye-popping artwork and have your project
+					replicated.
+					Using a reputable full service DVD Replication company like PacificDisc, Inc. to partner with is
+					certainly a
+					helpful option to ensure a professional end result, but to help with your DVD replication project, here
+					are 4 easy
+					steps to follow for good DVD replication results:
+	
+				</p>
+			</div>
+		</section>
+		<!-- End Sample Area -->
+		<!--? Start Button -->
+		<section class="button-area">
+			<center class="container box_1170 border-top-generic">
+				<h3 class="text-heading">Donate Now!!!</h3>
+
+			<!--PAYPAL DONATIONS STARTS-->
+				<div style="align:center">
+
+										  <script
+							src="https://www.paypal.com/sdk/js?client-id=ASWOct6ljBUH8SF-upxQ4cgNhfPfgaRQtfWcp9pr6EZaZjM6QbEkWWMVy9kF8wK5UkBw8q3FjeoOcAfu"> // Required. Replace YOUR_CLIENT_ID with your sandbox client ID.
+						  </script>
+
+						  <div id="paypal-button-container"></div>
+
+<!--						  <script>-->
+<!--							paypal.Buttons().render('#paypal-button-container');-->
+<!--							// This function displays Smart Payment Buttons on your web page.-->
+<!--						  </script>-->
+				<script>
+  paypal.Buttons({
+    createOrder: function(data, actions) {
+      // This function sets up the details of the transaction, including the amount and line item details.
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: '0.01'
+          }
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      // This function captures the funds from the transaction.
+      return actions.order.capture().then(function(details) {
+        // This function shows a transaction success message to your buyer.
+        alert('Transaction completed by ' + details.payer.name.given_name);
+      });
+    }
+  }).render('#paypal-button-container');
+  //This function displays Smart Payment Buttons on your web page.
+</script>
+			<!--PAYPAL DONATIONS ENDS-->
+
+</div>
+			</div>
+		</section>
+		<!-- End Button -->
+</main>
+
+{% endblock body %}

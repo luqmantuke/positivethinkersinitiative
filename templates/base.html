@@ -3,10 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> Charity | Teamplate</title>
-    <meta name="description" content="">
+   <title>  {% block title %}{% endblock title %}</title>
+    <meta name="description" content="Positive Thinkers Initiative Tanzania is a NGO operating in Tanzania">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
 
 	<!-- CSS here -->
@@ -38,7 +37,7 @@
                                 <div class="header-info-left d-flex">
                                     <ul>     
                                         <li>Phone:  +255 758 585 847</li>
-                                        <li>Email: noreply@yourdomain.com</li>
+                                        <li>Email: noreply@ptitz.com</li>
                                     </ul>
                                     <div class="header-social">    
                                         <ul>
@@ -72,24 +71,18 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">                                                                                          
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about.html">About</a></li>
-                                                <li><a href="program.html">News & Projects</a></li>
-                                                <li><a href="events.html">social events </a></li>
-                                                <li><a href="blog.html">Blog</a>
-                                                    <ul class="submenu">
-                                                        <li><a href="blog.html">Blog</a></li>
-                                                        <li><a href="blog_details.html">Blog Details</a></li>
-                                                        <li><a href="elements.html">Element</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="contact.html">Contact</a></li>
+                                                <li><a href="{% url 'home' %}">Home</a></li>
+                                                <li><a href="{% url 'about' %}">About Us</a></li>
+                                                <li><a href="{% url 'projects_list' %}">Projects</a></li>
+                                                <li><a href="{% url 'updates_list' %}">Updates & Events </a></li>
+                                                <li><a href="{% url 'ourimpacts_list' %}">Our Impacts</a></li>
+                                                <li><a href="{% url 'contact' %}">Contact</a></li>
                                             </ul>
                                         </nav>
                                     </div>
                                     <!-- Header-btn -->
                                     <div class="header-right-btn d-none d-lg-block ml-20">
-                                        <a href="contact.html" class="btn header-btn">Donate</a>
+                                        <a href="{% url 'donations' %}" class="btn header-btn">Donate</a>
                                     </div>
                                 </div>
                             </div> 
@@ -157,32 +150,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                            <div class="single-footer-caption mb-50">
-                                <div class="footer-tittle">
-                                    <h4>Newsletter</h4>
-                                    <div class="footer-pera footer-pera2">
-                                    <p>Heaven fruitful doesn't over lesser in days. Appear creeping.</p>
-                                </div>
-                                <!-- Form -->
-                                <div class="footer-form" >
-                                    <div id="mc_embed_signup">
-                                        <form target="_blank" action=""
-                                        method="get" class="subscribe_form relative mail_part">
-                                            <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
-                                            class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
-                                            onblur="this.placeholder = ' Email Address '">
-                                            <div class="form-icon">
-                                                <button type="submit" name="submit" id="newsletter-submit"
-                                                class="email_icon newsletter-submit button-contactForm"><img src="{% static 'assets/img/gallery/form.png' %}" alt=""></button>
-                                            </div>
-                                            <div class="mt-10 info"></div>
-                                        </form>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>

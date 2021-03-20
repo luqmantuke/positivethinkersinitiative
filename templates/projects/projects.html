@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Projects {% endblock title %}
+
+{% block body %}
+
+    <main>
+    <!--? Hero Start -->
+    <div class="slider-area2">
+        <div class="slider-height2 d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap hero-cap2 pt-20 text-center">
+                            <h2>Latest Projects </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+    <!-- Our Cases Start -->
+    <div class="our-cases-area section-padding30">
+        <div class="container">
+            <div class="row">
+
+                {% for project in projects %}
+
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-cases mb-40">
+                        <div class="cases-img">
+                            <img src="{{ project.image.url }}" alt="{{ projects.name }}">
+                        </div>
+                        <div class="cases-caption">
+                            <h3><a href="{% url 'projects_detail' project.slug %}">{{ project.name }}</a></h3>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Our Cases End -->
+    </main>
+
+    {% endblock body %}

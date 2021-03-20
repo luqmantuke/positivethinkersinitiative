@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'ptitz',
     'ourimpacts',
     'career',
+    'projects',
+    'updates_events',
     'ckeditor',
     'crispy_forms',
     'django_filters',
@@ -141,3 +143,13 @@ CKEDITOR_CONFIGS = {
         'toolbar': None,
     },
 }
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'admin@fauluhub.com'
+EMAIL_HOST = 'mail.privateemail.com'
+EMAIL_HOST_USER = 'admin@fauluhub.com'
+EMAIL_HOST_PASSWORD = '3QcQFiM!k6ct!88#TVw3'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+FAIL_SILENTLY = False

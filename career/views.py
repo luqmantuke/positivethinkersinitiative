@@ -8,7 +8,7 @@ def career_list(request):
     career = Career.objects.all()
     paginator = Paginator(career, 15)
     page = request.GET.get('page')
-    recent_post = Career.objects.all()[:3]
+    recent_post = OurImpacts.objects.all()[:3]
     recent_jobs = Career.objects.all()[:3]
     try:
         career_list = paginator.page(page)
