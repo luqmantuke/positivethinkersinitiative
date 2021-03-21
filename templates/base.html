@@ -32,7 +32,13 @@
     <!--Adding Goodle Fonts -->
 </head>
 <body>
-   
+   {% if messages %}<br>
+<div style="font-size:13px;" class="col-md-12 text-center mt-0 pt-0">
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">{{ message | safe }}</div>
+  {% endfor %}
+</div>
+{% endif %}
     <header>
         <!-- Header Start -->
         <div class="header-area">
