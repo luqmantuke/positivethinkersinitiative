@@ -17,6 +17,9 @@ class OurImpacts(models.Model):
     category = models.CharField(max_length=300, choices=category_list, null=True)
     slug = models.SlugField(null=True, blank=True)
 
+    class Meta:
+        ordering = ['-date']
+
     def get_absolute_url(self):
         return reverse('ourimpacts_detail', kwargs={'slug': self.slug})
 

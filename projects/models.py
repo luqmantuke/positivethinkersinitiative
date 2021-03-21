@@ -13,6 +13,9 @@ class Projects(models.Model):
     date = models.DateTimeField(default=timezone.now)
     slug = models.SlugField(null=True, blank=True)
 
+    class Meta:
+        ordering = ['-date']
+
     def get_absolute_url(self):
         return reverse('projects_detail', kwargs={'slug': self.slug})
 

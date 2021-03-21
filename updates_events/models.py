@@ -15,6 +15,9 @@ class Updates(models.Model):
     date = models.DateTimeField(default=timezone.now)
     slug = models.SlugField(null=True, blank=True)
 
+    class Meta:
+        ordering = ['-date']
+
     def get_absolute_url(self):
         return reverse('updates_detail', kwargs={'slug': self.slug})
 

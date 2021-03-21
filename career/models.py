@@ -16,6 +16,10 @@ class Career(models.Model):
     date = models.DateTimeField(default=timezone.now)
     slug = models.SlugField(null=True, blank=True)
 
+    class Meta:
+        ordering = ['-date']
+
+
     def get_absolute_url(self):
         return reverse('career_detail', kwargs={'slug': self.slug})
 
